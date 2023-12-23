@@ -9,11 +9,11 @@ const PostList = () => {
   const { data, error, isLoading, isFetching } = useGetPostsQuery(limit);
 
   useEffect(() => {
-    if (fetching && !isFetching) {
+    if (fetching && !isFetching && data.length < 100) {
       setlimit((limit) => limit + 10);
     }
     setFetching(false);
-  }, [fetching, isFetching]);
+  }, [fetching, isFetching, data]);
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);
