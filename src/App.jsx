@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PostList from "./components/PostList";
-
+import PostDetails from "./components/PostDetails";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { postsApi } from "./services/apiService";
@@ -22,6 +22,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<PostList />} />
+          <Route path="/post/:id" element={<PostDetails />} />
         </Routes>
       </Router>
     </Provider>

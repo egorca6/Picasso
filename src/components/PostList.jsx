@@ -1,17 +1,15 @@
 import { useGetPostsQuery } from "../services/apiService";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const PostList = () => {
   const { data, error, isLoading } = useGetPostsQuery();
-  const [expandedPostId, setExpandedPostId] = useState(null);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Загрузка...</div>;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div>Ошибка: {error.message}</div>;
   }
 
   return (
@@ -22,10 +20,8 @@ const PostList = () => {
           <div key={post.id}>
             <p>
               {post.id} - {post.title}!!
-              {expandedPostId === post.id
-                ? post.body
-                : `${post.body.slice(0, 50)}...`}
-              <Link to={`/posts/${post.id}`}>
+              {post.body.slice(0, 50) + "..."}
+              <Link to={`/post/${post.id}`}>
                 <button>Просмотр</button>
               </Link>
             </p>
