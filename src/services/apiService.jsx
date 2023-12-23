@@ -8,7 +8,7 @@ export const postsApi = createApi({
 
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: (page = 0, limit = 5) => `/posts?_page=${page}&_${limit}`,
+      query: (limit = 10) => `/posts?_limit=${limit}`,
     }),
     getPostById: builder.query({
       query: (id = 1) => `/posts/${id}`,
@@ -17,4 +17,3 @@ export const postsApi = createApi({
 });
 
 export const { useGetPostsQuery, useGetPostByIdQuery } = postsApi;
-// export const { fetchPosts } = postsApi.endpoints.getPosts;
